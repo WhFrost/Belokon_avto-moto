@@ -1,0 +1,29 @@
+.slider {
+  padding-left: 7px;
+}
+
+.slider__active-slide-container {
+  width: 600px;
+  height: 375px;
+  margin-bottom: 39px;
+}
+
+.slider__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.slider__item {
+  width: 128px;
+  height: 80px;
+}
+
+.slider__item:not(:last-child) {
+  margin-right: 25px;
+}
