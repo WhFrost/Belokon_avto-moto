@@ -1,0 +1,15 @@
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.main-nav__item:not(:last-child) {
+  padding-right: 68px;
+}
