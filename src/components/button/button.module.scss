@@ -1,4 +1,5 @@
 .button {
+  padding: 16px 20px;
   overflow: hidden;
 
   font-weight: 600;
@@ -35,4 +36,30 @@
 
 .button--left {
   transform: rotate(180deg);
+}
+
+.button--primary {
+  color: white;
+
+  background-color: #d12136;
+
+
+  &:hover {
+    background-color: #bd0c21;
+  }
+}
+
+.button--secondary {
+  font-weight: 400;
+  color: #d12136;
+
+  background-color: white;
+  border: 1px solid #d12136;
+
+
+  &:hover {
+    color: white;
+
+    background-color: #d12136;
+  }
 }
