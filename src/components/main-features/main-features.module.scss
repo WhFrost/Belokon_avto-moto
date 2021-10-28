@@ -14,7 +14,7 @@
   }
 }
 
-.main-features__item--fuel::before {
+.main-features__item--fuel-type::before {
   content: '';
 
   width: 24px;
@@ -22,5 +22,38 @@
   margin-bottom: 8px;
 
   background: url(../../assets/img/fuel.svg) no-repeat;
+  opacity: 0.5;
+}
+
+.main-features__item--transmission-type::before {
+  content: '';
+
+  width: 24px;
+  height: 22px;
+  margin-bottom: 8px;
+
+  background: url(../../assets/img/transmission.svg) no-repeat;
+  opacity: 0.5;
+}
+
+.main-features__item--engine-power::before {
+  content: '';
+
+  width: 24px;
+  height: 22px;
+  margin-bottom: 8px;
+
+  background: url(../../assets/img/engine-power.svg) no-repeat;
+  opacity: 0.5;
+}
+
+.main-features__item--engine-volume::before {
+  content: '';
+
+  width: 24px;
+  height: 22px;
+  margin-bottom: 8px;
+
+  background: url(../../assets/img/engine-volume.svg) no-repeat;
   opacity: 0.5;
 }
