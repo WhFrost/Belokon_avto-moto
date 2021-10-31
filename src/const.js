@@ -24,7 +24,14 @@ const FeaturesTypes = {
   ENGINE_VOLUME: 'engine-volume',
 };
 
+const TabsName = {
+  specifications: 'характеристики',
+  reviews: 'отзывы',
+  contacts: 'контакты',
+};
+
 export {
   HEADER_NAV_ITEMS,
-  FeaturesTypes
+  FeaturesTypes,
+  TabsName
 };

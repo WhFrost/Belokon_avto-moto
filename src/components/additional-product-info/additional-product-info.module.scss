@@ -1,0 +1,27 @@
+.additional-info__nav-list {
+  display: flex;
+}
+
+.additional-info__nav-item {
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+.additional-info__nav-link {
+  padding-top: 11px;
+  padding-right: 14px;
+  padding-bottom: 14px;
+  padding-left: 14px;
+
+  font-weight: normal;
+  color: #48494d;
+
+  &:active {
+    color: #ffffff;
+
+    background: #d12136;
+  }
+}
