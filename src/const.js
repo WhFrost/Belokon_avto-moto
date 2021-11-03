@@ -25,13 +25,45 @@ const FeaturesTypes = {
 };
 
 const TabsName = {
-  specifications: 'характеристики',
-  reviews: 'отзывы',
-  contacts: 'контакты',
+  specifications: 'Характеристики',
+  reviews: 'Отзывы',
+  contacts: 'Контакты',
 };
+
+const FOOTER_NAV_ITEMS = [
+  {
+    title: 'Корпоративным клиентам',
+    link: '#',
+  },
+  {
+    title: 'Клиентам',
+    link: '#',
+  },
+  {
+    title: 'Аренда авто',
+    link: '#',
+  },
+  {
+    title: 'Каршеринг',
+    link: '#',
+  },
+  {
+    title: 'Как продать авто',
+    link: '#',
+  },
+  {
+    title: 'Trade-in',
+    link: '#',
+  },
+  {
+    title: 'Test drive',
+    link: '#',
+  },
+];
 
 export {
   HEADER_NAV_ITEMS,
   FeaturesTypes,
-  TabsName
+  TabsName,
+  FOOTER_NAV_ITEMS
 };

@@ -1,15 +1,16 @@
-.main-nav {
+.footer-nav {
   display: flex;
   align-items: center;
 }
 
-.main-nav__list {
+.footer-nav__list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+
 }
 
-.main-nav__item:not(:last-child) {
-  margin-right: 68px;
+.footer-nav__item:not(:last-child) {
+  margin-right: 66px;
 }

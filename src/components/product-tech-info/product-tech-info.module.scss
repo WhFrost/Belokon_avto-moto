@@ -1,0 +1,33 @@
+.tech-details__list {
+  max-width: 48.4%;
+  margin: 0;
+}
+
+.tech-details__item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  font-style: normal;
+
+  border-bottom: 1px solid #d7d9df;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+.tech-details__name {
+  overflow: hidden;
+
+  color: #48494d;
+}
+
+.tech-details__value {
+  overflow: hidden;
+
+  color: #000000;
+}

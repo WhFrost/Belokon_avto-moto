@@ -17,7 +17,7 @@ function ProductCard (props) {
       <div className={`${styles['product__wrapper']} ${globalStyles['container']}`}>
         <Slider photos={photos}/>
         <ProductInfo product={product}/>
-        <AdditionalProductInfo tabs={tabs}/>
+        <AdditionalProductInfo tabs={tabs} product={product}/>
       </div>
     </section>
   );
