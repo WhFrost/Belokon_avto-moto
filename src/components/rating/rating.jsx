@@ -10,9 +10,9 @@ function Rating (props) {
   return (
     <div>
       {
-        new Array(STARS_COUNT).fill('').map((item) => (
+        new Array(STARS_COUNT).fill('').map((item, index) => (
           <Star key={nanoid()} fill={
-            item <= rating - 1
+            index <= rating - 1
               ? StarsFillColor.ACTIVE
               : StarsFillColor.INACTIVE
           }
