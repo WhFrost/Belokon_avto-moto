@@ -48,6 +48,17 @@ const FOOTER_NAV_ITEMS = [
   },
 ];
 
+const CONTACTS = {
+  adressTitle: 'Адрес',
+  adressValue: 'Санкт-Петербург,\n набережная реки Карповки, дом 5',
+  workTimeTitle: 'Режим работы',
+  workTimeValue: 'Ежедневно, с 10:00 до 21:00',
+  phoneTitle: 'Телефон',
+  phoneValue: '8 (800) 333-55-99',
+  emailTitle: 'E-mail',
+  emailValue: 'info@avto-moto.ru',
+};
+
 const STARS_COUNT = 5;
 const StarsSizes = {
   WIDTH_SMALL: 16,
@@ -85,6 +96,7 @@ const TextualRating = {
 export {
   HEADER_NAV_ITEMS,
   FOOTER_NAV_ITEMS,
+  CONTACTS,
   STARS_COUNT,
   StarsFillColor,
   StarsSizes,

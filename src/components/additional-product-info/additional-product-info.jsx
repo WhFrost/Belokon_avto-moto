@@ -6,7 +6,8 @@ import styles from './additional-product-info.module.scss';
 import {nanoid} from 'nanoid';
 import TechInfo from '../product-tech-info/product-tech-info';
 import Reviews from '../reviews/reviews';
-import {TabsName} from '../../const';
+import Contacts from '../contacts/contacts';
+import {TabsName, CONTACTS} from '../../const';
 
 function AdditionalProductInfo (props) {
   const {product, reviews} = props;
@@ -25,7 +26,7 @@ function AdditionalProductInfo (props) {
         );
       case TabsName.CONTACTS:
         return (
-          <TechInfo product={product} />
+          <Contacts contacts={CONTACTS} />
         );
       default:
         return (

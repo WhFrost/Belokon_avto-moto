@@ -1,0 +1,39 @@
+.contacts {
+  display: flex;
+  margin-right: 74px;
+}
+
+.contacts__list {
+  width: 274px;
+}
+
+.contacts__item:not(:last-child) {
+  margin-bottom: 27px;
+}
+
+.contacts__title,
+.contacts__value {
+  display: block;
+
+  color: #1a212f;
+}
+
+.contacts__title {
+  margin-bottom: 8px;
+  overflow: hidden;
+
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  font-style: normal;
+}
+
+.contacts__value {
+  overflow: hidden;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  font-style: normal;
+  white-space: pre-wrap;
+}
