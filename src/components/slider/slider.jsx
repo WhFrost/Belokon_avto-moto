@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './slider.module.scss';
 import {nanoid} from 'nanoid';
@@ -6,11 +6,12 @@ import Button from '../button/button';
 
 function Slider (props) {
   const {photos} = props;
+  const [activeSlide, setActiveSlide] = useState(photos[0]);
   const {
     srcSlide,
     srcSlideRetina,
     alt,
-  } = photos[0];
+  } = activeSlide;
 
   return (
     <div className={styles['slider']}>
@@ -21,9 +22,17 @@ function Slider (props) {
         />
       </div>
       <div className={styles['slider__controls']}>
-        <Button mod={'button--left'}/>
+        <Button
+          mod={'button--left'}
+          onClick={() => {
+            const currentIndex = photos.indexOf(activeSlide);
+            setActiveSlide(
+              currentIndex === 0 ? photos[currentIndex] : photos[currentIndex - 1],
+            );
+          }}
+          disabled={photos.indexOf(activeSlide) === 0}
+        />
         <ul className={styles['slider__list']}>
-
           {
             photos.map((photo) => (
               <li className={styles['slider__item']} key={nanoid()}>
@@ -35,7 +44,16 @@ function Slider (props) {
             )
           }
         </ul>
-        <Button mod={'button--right'}/>
+        <Button
+          mod={'button--right'}
+          onClick={() => {
+            const currentIndex = photos.indexOf(activeSlide);
+            setActiveSlide(
+              currentIndex === photos.length - 1 ? photos[currentIndex] : photos[currentIndex + 1],
+            );
+          }}
+          disabled={photos.indexOf(activeSlide) === photos.length - 1}
+        />
       </div>
     </div>
   );
