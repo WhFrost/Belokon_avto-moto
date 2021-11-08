@@ -1,17 +1,14 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
 import ProductProp from '../prop-validation/product.prop';
-import ReviewProp from '../prop-validation/review.prop';
 import styles from './additional-product-info.module.scss';
 import {nanoid} from 'nanoid';
 import TechInfo from '../product-tech-info/product-tech-info';
 import Reviews from '../reviews/reviews';
 import Contacts from '../contacts/contacts';
 import {TabsName, CONTACTS} from '../../const';
-import ReviewPopup from '../review-popup/review-popup';
 
 function AdditionalProductInfo (props) {
-  const {product, reviews} = props;
+  const {product} = props;
   const [activeTab, setActiveTab] = useState(TabsName.SPECIFICATIONS);
   const tabs = Object.values(TabsName);
 
@@ -23,7 +20,7 @@ function AdditionalProductInfo (props) {
         );
       case TabsName.REVIEWS:
         return (
-          <Reviews reviews={reviews} />
+          <Reviews />
         );
       case TabsName.CONTACTS:
         return (
@@ -39,7 +36,6 @@ function AdditionalProductInfo (props) {
   return (
     <div className={styles['additional-info']}>
       <nav className={styles['additional-info__nav']}>
-        <ReviewPopup />
         <ul className={styles['additional-info__nav-list']}>
           {
             tabs.map((tab) => (
@@ -67,7 +63,6 @@ function AdditionalProductInfo (props) {
 
 AdditionalProductInfo.propTypes = {
   product: ProductProp,
-  reviews: PropTypes.arrayOf(ReviewProp),
 };
 
 export default AdditionalProductInfo;

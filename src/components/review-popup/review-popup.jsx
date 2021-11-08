@@ -1,20 +1,110 @@
-import React from 'react';
+import React, {useRef, useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import styles from './review-popup.module.scss';
 import globalStyles from '../app/app.module.scss';
 import Rating from '../rating/rating';
 import Button from '../button/button';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../store/action';
+import {
+  getReviewAuthor,
+  getAdvantages,
+  getDisadvantages,
+  getRating,
+  getComment
+} from '../../store/selectors';
 
-function ReviewPopup () {
+function ReviewPopup (props) {
+  const {
+    name,
+    advantages,
+    disadvantages,
+    popupRating,
+    comment,
+    onNameChange,
+    onAdvantagesChange,
+    onDisadvantagesChange,
+    onRatingChange,
+    onCommentChange,
+    onReviewSubmit,
+    onPopupClose,
+  } = props;
+
+  const [nameInputError, setNameInputError] = useState(false);
+  const [commentInputError, setCommentInputError] = useState(false);
+
+  const nameFormFieldClassNames = nameInputError
+    ? `${styles['form__field']} ${styles['form__field--name']} ${styles['form__field--error']}`
+    : `${styles['form__field']} ${styles['form__field--name']}`;
+  const commentFormFieldClassNames = commentInputError
+    ? `${styles['form__field']} ${styles['form__field--comment']} ${styles['form__field--error']}`
+    : `${styles['form__field']} ${styles['form__field--comment']}`;
+
+  const overlayRef = useRef(null);
+
+  const handleReviewSubmit = (evt) => {
+    evt.preventDefault();
+    setNameInputError(!name);
+    setCommentInputError(!comment);
+    if (name && comment) {
+      const review = {
+        name: name,
+        advantages: advantages,
+        disadvantages: disadvantages,
+        rating: popupRating,
+        comment: comment,
+      };
+      onReviewSubmit(review);
+      localStorage.removeItem('popupReviewData');
+      onPopupClose();
+    }
+  };
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    const closeOnOverlayClick = (evt) => {
+      if (evt.target === overlay) {
+        onPopupClose();
+      }
+    };
+    const onPressEsc = (evt) => {
+      if (evt.key === 'esc' || evt.key === 'Escape') {
+        onPopupClose();
+      }
+    };
+
+    overlay.addEventListener('click', closeOnOverlayClick);
+    window.addEventListener('keydown', onPressEsc);
+    return () => {
+      overlay.removeEventListener('click', closeOnOverlayClick);
+      window.removeEventListener('keydown', onPressEsc);
+    };
+  });
+
+  useEffect(() => {
+    const popupReviewData = {
+      name,
+      advantages,
+      disadvantages,
+      popupRating,
+      comment,
+    };
+    localStorage.setItem('popupReviewData', JSON.stringify(popupReviewData));
+  }, [name, advantages, disadvantages, popupRating, comment]);
+
   return (
-    <div className={styles['overlay']}>
+    <div className={styles['overlay']} ref={overlayRef}>
       <div className={styles['popup']}>
         <h3 className={styles['popup__title']}>
           Оставить отзыв
         </h3>
-        <Button mod={'button--close'} />
+        <Button
+          mod={'button--close'}
+          onClick={onPopupClose}
+        />
         <form className={`${styles['popup__form']} ${styles['form']}`} action="">
           <div className={styles['form__fields-wrapper']}>
-            <div className={`${styles['form__field']} ${styles['form__field--name']}`}>
+            <div className={nameFormFieldClassNames}>
               <label htmlFor="name" className={globalStyles['visually-hidden']}>
                 Введите ваше имя
               </label>
@@ -25,6 +115,8 @@ function ReviewPopup () {
                 placeholder="Имя"
                 required
                 autoFocus
+                value={name}
+                onChange={onNameChange}
               />
             </div>
             <div className={styles['form__field']}>
@@ -36,6 +128,8 @@ function ReviewPopup () {
                 className={styles['form__input']}
                 id="advantages"
                 placeholder="Достоинства"
+                value={advantages}
+                onChange={onAdvantagesChange}
               />
             </div>
             <div className={styles['form__field']}>
@@ -47,15 +141,21 @@ function ReviewPopup () {
                 className={styles['form__input']}
                 id="disadvantages"
                 placeholder="Недостатки"
+                value={disadvantages}
+                onChange={onDisadvantagesChange}
               />
             </div>
             <div className={styles['form__rating']}>
               <span className={styles['form__rating--view']}>
                 Оцените товар:
               </span>
-              <Rating />
+              <Rating
+                isChangeble
+                rating={popupRating}
+                onRatingChange={onRatingChange}
+              />
             </div>
-            <div className={`${styles['form__field']} ${styles['form__field--comment']}`}>
+            <div className={commentFormFieldClassNames}>
               <label htmlFor="comment"  className={globalStyles['visually-hidden']}>
                 Оставьте ваш комментарий
               </label>
@@ -65,14 +165,70 @@ function ReviewPopup () {
                 id="comment"
                 placeholder="Комментарий"
                 required
+                value={comment}
+                onChange={onCommentChange}
               />
             </div>
           </div>
-          <Button text={'Оставить отзыв'} mod='button--primary' type='submit' />
+          <Button
+            text={'Оставить отзыв'}
+            mod='button--primary'
+            type='submit'
+            onClick={handleReviewSubmit}
+          />
         </form>
       </div>
     </div>
   );
 }
 
-export default ReviewPopup;
+ReviewPopup.propTypes = {
+  name: PropTypes.string,
+  advantages: PropTypes.string,
+  disadvantages: PropTypes.string,
+  popupRating: PropTypes.number,
+  comment: PropTypes.string,
+  onNameChange: PropTypes.func,
+  onAdvantagesChange: PropTypes.func,
+  onDisadvantagesChange: PropTypes.func,
+  onRatingChange: PropTypes.func,
+  onCommentChange: PropTypes.func,
+  onReviewSubmit: PropTypes.func,
+  onPopupClose: PropTypes.func,
+};
+
+const mapStateToProps = (state) => ({
+  name: getReviewAuthor(state),
+  advantages: getAdvantages(state),
+  disadvantages: getDisadvantages(state),
+  popupRating: getRating(state),
+  comment: getComment(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onNameChange(evt) {
+    dispatch(ActionCreator.setReviewAuthor(evt.target.value));
+  },
+  onAdvantagesChange(evt) {
+    dispatch(ActionCreator.setAdvantages(evt.target.value));
+  },
+  onDisadvantagesChange(evt) {
+    dispatch(ActionCreator.setDisadvantages(evt.target.value));
+  },
+  onRatingChange(rating) {
+    dispatch(ActionCreator.setRating(rating));
+  },
+  onCommentChange(evt) {
+    dispatch(ActionCreator.setComment(evt.target.value));
+  },
+  onReviewSubmit(data) {
+    dispatch(ActionCreator.addReview(data));
+    dispatch(ActionCreator.clearData());
+  },
+  onPopupClose() {
+    dispatch(ActionCreator.setPopupViewStatus(false));
+    dispatch(ActionCreator.clearData());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewPopup);

@@ -61,9 +61,9 @@ const CONTACTS = {
 
 const DEFAULT_MAP_LAT = 59.9682962;
 const DEFAULT_MAP_LNG = 30.3152402;
-const DEFAULT_MAP_ZOOM = 17.42;
+const DEFAULT_MAP_ZOOM = 17;
 const MAP_WIDTH = '431px';
-const API_KEY = '';
+const API_KEY = 'AIzaSyDmFVI-aAevCd3zJtrq-Tq1RetDLZ4cDy0';
 
 const STARS_COUNT = 5;
 const StarsSizes = {

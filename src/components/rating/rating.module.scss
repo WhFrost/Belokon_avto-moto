@@ -1,0 +1,13 @@
+.rating__item {
+  margin: 0;
+  margin-right: 8px;
+  padding: 0;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

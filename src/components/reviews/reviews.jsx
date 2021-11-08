@@ -5,13 +5,20 @@ import ReviewProp from '../prop-validation/review.prop';
 import Review from '../review/review';
 import Button from '../button/button';
 import {nanoid} from 'nanoid';
+import {connect} from 'react-redux';
+import {getReviews} from '../../store/selectors';
+import {ActionCreator} from '../../store/action';
 
 function Reviews (props) {
-  const {reviews} = props;
+  const {reviews, onAddReviewButtonClick} = props;
 
   return (
     <div className={styles['reviews']}>
-      <Button text={'Оставить отзыв'} mod={'button--secondary'}/>
+      <Button
+        text={'Оставить отзыв'}
+        mod={'button--secondary'}
+        onClick={() => onAddReviewButtonClick(true)}
+      />
       <ul className={styles['reviews__list']}>
         {
           reviews.map((review) => (
@@ -26,6 +33,17 @@ function Reviews (props) {
 
 Reviews.propTypes = {
   reviews: PropTypes.arrayOf(ReviewProp),
+  onAddReviewButtonClick: PropTypes.func,
 };
 
-export default Reviews;
+const mapStateToProps = (state) => ({
+  reviews: getReviews(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onAddReviewButtonClick(status) {
+    dispatch(ActionCreator.setPopupViewStatus(status));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Reviews);

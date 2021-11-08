@@ -21,7 +21,7 @@ function Map() {
 
   return (
     <LoadScript googleMapsApiKey={API_KEY}>
-      <GoogleMap mapContainerStyle={mapContainerStyle} defaultCenter={defaultCenter} defaultZoom={DEFAULT_MAP_ZOOM}>
+      <GoogleMap mapContainerStyle={mapContainerStyle} center={defaultCenter} zoom={DEFAULT_MAP_ZOOM}>
         <Marker position={defaultCenter} icon={mapPin}/>
       </GoogleMap>
     </LoadScript>

@@ -94,6 +94,24 @@
       color: #d12136;
     }
   }
+
+  &--error {
+    &::after {
+      content: 'Заполните поле!';
+      position: absolute;
+      top: -20px;
+      left: 0;
+
+      overflow: hidden;
+
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 19px;
+      color: #ff0000;
+      font-style: normal;
+      font-style: normal;
+    }
+  }
 }
 
 .form__input {
