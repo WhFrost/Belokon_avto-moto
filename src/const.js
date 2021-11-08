@@ -50,7 +50,7 @@ const FOOTER_NAV_ITEMS = [
 
 const CONTACTS = {
   adressTitle: 'Адрес',
-  adressValue: 'Санкт-Петербург,\n набережная реки Карповки, дом 5',
+  adressValue: 'Санкт-Петербург,\nнабережная реки Карповки, дом 5',
   workTimeTitle: 'Режим работы',
   workTimeValue: 'Ежедневно, с 10:00 до 21:00',
   phoneTitle: 'Телефон',
@@ -58,6 +58,12 @@ const CONTACTS = {
   emailTitle: 'E-mail',
   emailValue: 'info@avto-moto.ru',
 };
+
+const DEFAULT_MAP_LAT = 59.9682962;
+const DEFAULT_MAP_LNG = 30.3152402;
+const DEFAULT_MAP_ZOOM = 17.42;
+const MAP_WIDTH = '431px';
+const API_KEY = '';
 
 const STARS_COUNT = 5;
 const StarsSizes = {
@@ -97,6 +103,11 @@ export {
   HEADER_NAV_ITEMS,
   FOOTER_NAV_ITEMS,
   CONTACTS,
+  DEFAULT_MAP_LAT,
+  DEFAULT_MAP_LNG,
+  DEFAULT_MAP_ZOOM,
+  MAP_WIDTH,
+  API_KEY,
   STARS_COUNT,
   StarsFillColor,
   StarsSizes,

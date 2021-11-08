@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './contacts.module.scss';
+import Map from '../map/map';
 
 function Contacts (props) {
   const {contacts} = props;
@@ -55,6 +56,7 @@ function Contacts (props) {
           </span>
         </li>
       </ul>
+      <Map />
     </div>
   );
 }
