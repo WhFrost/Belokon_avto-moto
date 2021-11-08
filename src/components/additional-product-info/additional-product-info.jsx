@@ -8,6 +8,7 @@ import TechInfo from '../product-tech-info/product-tech-info';
 import Reviews from '../reviews/reviews';
 import Contacts from '../contacts/contacts';
 import {TabsName, CONTACTS} from '../../const';
+import ReviewPopup from '../review-popup/review-popup';
 
 function AdditionalProductInfo (props) {
   const {product, reviews} = props;
@@ -38,6 +39,7 @@ function AdditionalProductInfo (props) {
   return (
     <div className={styles['additional-info']}>
       <nav className={styles['additional-info__nav']}>
+        <ReviewPopup />
         <ul className={styles['additional-info__nav-list']}>
           {
             tabs.map((tab) => (
