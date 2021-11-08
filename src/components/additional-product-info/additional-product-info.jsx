@@ -40,7 +40,8 @@ function AdditionalProductInfo (props) {
           {
             tabs.map((tab) => (
               <li className={styles['additional-info__nav-item']} key={nanoid()}>
-                <a href="#"
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a href='#'
                   className={
                     tab === activeTab
                       ? `${styles['additional-info__nav-link']} ${styles['additional-info__nav-link--active']}`
