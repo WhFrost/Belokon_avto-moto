@@ -40,6 +40,13 @@ function ReviewPopup (props) {
     ? `${styles['form__field']} ${styles['form__field--comment']} ${styles['form__field--error']}`
     : `${styles['form__field']} ${styles['form__field--comment']}`;
 
+  const nameInputClassNames = nameInputError
+    ? `${styles['form__input']} ${styles['form__input--name']} ${styles['form__input--error']}`
+    : `${styles['form__input']} ${styles['form__input--name']}`;
+  const commentInputClassNames = commentInputError
+    ? `${styles['form__input']} ${styles['form__input--comment']} ${styles['form__input--error']}`
+    : `${styles['form__input']} ${styles['form__input--comment']}`;
+
   const overlayRef = useRef(null);
 
   const handleReviewSubmit = (evt) => {
@@ -55,7 +62,7 @@ function ReviewPopup (props) {
         comment: comment,
       };
       onReviewSubmit(review);
-      localStorage.removeItem('popupReviewData');
+      localStorage.setItem('popupReviewData', JSON.stringify(review));
       onPopupClose();
     }
   };
@@ -110,7 +117,7 @@ function ReviewPopup (props) {
               </label>
               <input
                 type="text"
-                className={`${styles['form__input']} ${styles['form__input--name']}`}
+                className={nameInputClassNames}
                 id="name"
                 placeholder="Имя"
                 required
@@ -161,7 +168,7 @@ function ReviewPopup (props) {
               </label>
               <textarea
                 type="text"
-                className={`${styles['form__input']} ${styles['form__input--comment']}`}
+                className={commentInputClassNames}
                 id="comment"
                 placeholder="Комментарий"
                 required

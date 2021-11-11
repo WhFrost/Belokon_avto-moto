@@ -18,9 +18,13 @@ function Rating (props) {
 
   const [hover, setHover] = useState(popupRating);
 
-  const handleRatingButtonClick = (index) => {
+  const ratingButtonClick = (index) => {
     onRatingChange(index + 1);
   };
+  const handleRatingButtonClick = (index) => () => ratingButtonClick(index);
+
+  const handleRatingMouseEnter = (index) => () => setHover(index + 1);
+  const handleRatingMouseLeave = (index) => () => setHover(index - index);
 
   return (
     <div className={styles['rating']}>
@@ -33,9 +37,9 @@ function Rating (props) {
                 key={nanoid()}
                 type='button'
                 className={styles['rating__item']}
-                onClick={() => handleRatingButtonClick(index)}
-                onMouseEnter={() => setHover(index + 1)}
-                onMouseLeave={() => setHover(0)}
+                onClick={handleRatingButtonClick(index)}
+                onMouseEnter={handleRatingMouseEnter(index)}
+                onMouseLeave={handleRatingMouseLeave(index)}
               >
                 <Star
                   width={StarsSizes.WIDTH_BIG}

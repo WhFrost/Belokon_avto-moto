@@ -34,7 +34,7 @@ function Review (props) {
 
   return (
     <li className={styles['review__item']}>
-      <blockquote>
+      <blockquote className={styles['review__wrapper']}>
         <cite className={styles['review__author']}>
           {author}
         </cite>

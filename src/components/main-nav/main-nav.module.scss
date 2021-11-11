@@ -8,6 +8,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
 }
 
 .main-nav__item:not(:last-child) {

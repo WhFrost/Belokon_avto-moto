@@ -12,12 +12,16 @@ import {ActionCreator} from '../../store/action';
 function Reviews (props) {
   const {reviews, onAddReviewButtonClick} = props;
 
+  const handleAddReviewButtonClick = () => {
+    onAddReviewButtonClick(true);
+  };
+
   return (
     <div className={styles['reviews']}>
       <Button
         text={'Оставить отзыв'}
         mod={'button--secondary'}
-        onClick={() => onAddReviewButtonClick(true)}
+        onClick={handleAddReviewButtonClick}
       />
       <ul className={styles['reviews__list']}>
         {

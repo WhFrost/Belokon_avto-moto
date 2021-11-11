@@ -134,18 +134,24 @@
   cursor: pointer;
 
   &:focus {
-    border: 1px solid #ff0000;
+    border: 1px solid #48494d;
     outline: none;
   }
 
   &:hover {
     border: 1px solid #48494d;
   }
+
   &--comment {
     width: 300px;
     height: 100%;
 
     resize: none;
+  }
+
+  &--error {
+    border: 1px solid #ff0000;
+    outline: none;
   }
 
   &::placeholder {

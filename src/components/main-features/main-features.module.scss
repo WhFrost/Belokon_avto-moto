@@ -1,7 +1,11 @@
 .main-features__list {
   display: flex;
+  margin: 0;
   margin-bottom: 37px;
+  padding: 0;
   padding-left: 10px;
+
+  list-style: none;
 }
 
 .main-features__item {

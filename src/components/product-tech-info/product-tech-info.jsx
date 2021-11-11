@@ -16,9 +16,9 @@ function ProductTechInfo (props) {
               <dt className={styles['tech-details__name']}>
                 {name}
               </dt>
-              <dl className={styles['tech-details__value']}>
+              <dd className={styles['tech-details__value']}>
                 {value}
-              </dl>
+              </dd>
             </div>
           ))
         }

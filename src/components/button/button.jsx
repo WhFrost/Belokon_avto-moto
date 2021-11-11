@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './button.module.scss';
+import globalStyles from '../app/app.module.scss';
 
 function Button (props) {
   const {
@@ -8,6 +9,7 @@ function Button (props) {
     onClick,
     mod,
     disabled = false,
+    isHiddenText = false,
   } = props;
 
   return (
@@ -17,7 +19,7 @@ function Button (props) {
       type='button'
       disabled={disabled}
     >
-      {text}
+      <span className={isHiddenText ? globalStyles['visually-hidden'] : ''}>{text}</span>
     </button>
   );
 }
@@ -27,6 +29,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   mod: PropTypes.string,
   disabled: PropTypes.bool,
+  isHiddenText: PropTypes.bool,
 };
 
 export default Button;

@@ -11,6 +11,10 @@
 
 .additional-info__nav-list {
   display: flex;
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
 }
 
 .additional-info__nav-link {
@@ -27,6 +31,7 @@
   text-align: center;
   text-align: center;
   color: #48494d;
+  text-decoration: none;
   font-style: normal;
 
   border: 1px solid #d7d9df;

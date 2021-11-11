@@ -12,6 +12,11 @@ function AdditionalProductInfo (props) {
   const [activeTab, setActiveTab] = useState(TabsName.SPECIFICATIONS);
   const tabs = Object.values(TabsName);
 
+  const handleTabClick = (evt) => {
+    evt.preventDefault();
+    setActiveTab(evt.target.dataset.additionalnav);
+  };
+
   const getInfoByActiveTab = (tab) => {
     switch (tab) {
       case TabsName.SPECIFICATIONS:
@@ -48,7 +53,7 @@ function AdditionalProductInfo (props) {
                       : styles['additional-info__nav-link']
                   }
                   data-additionalnav = {tab}
-                  onClick={(evt) => setActiveTab(evt.target.dataset.additionalnav)}
+                  onClick={handleTabClick}
                 >
                   {tab}
                 </a>

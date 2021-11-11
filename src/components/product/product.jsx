@@ -6,7 +6,7 @@ import Slider from '../slider/slider';
 import ProductInfo from '../product-info/product-info';
 import AdditionalProductInfo from '../additional-product-info/additional-product-info';
 
-function ProductCard (props) {
+function Product (props) {
   const {product} = props;
   const {photos} = product;
 
@@ -21,9 +21,9 @@ function ProductCard (props) {
   );
 }
 
-ProductCard.propTypes = {
+Product.propTypes = {
   product: ProductProp,
 };
 
 
-export default ProductCard;
+export default Product;

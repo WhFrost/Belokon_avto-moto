@@ -4,7 +4,11 @@
 
 .contacts__list {
   width: 274px;
+  margin: 0;
   margin-right: 74px;
+  padding: 0;
+
+  list-style: none;
 }
 
 .contacts__item:not(:last-child) {
@@ -36,4 +40,9 @@
   line-height: 19px;
   font-style: normal;
   white-space: pre-wrap;
+}
+
+.contacts__link {
+  color: #48494d;
+  text-decoration: none;
 }
