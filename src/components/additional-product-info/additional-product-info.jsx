@@ -15,6 +15,7 @@ function AdditionalProductInfo (props) {
   const handleTabClick = (evt) => {
     evt.preventDefault();
     setActiveTab(evt.target.dataset.additionalnav);
+    return false;
   };
 
   const getInfoByActiveTab = (tab) => {

@@ -9,9 +9,9 @@ function ProductInfo (props) {
   const {productName, newPrice, oldPrice, mainFeatures} = product;
   return (
     <div className={styles['product-card']}>
-      <h1 className={styles['product-card__title']}>
+      <h2 className={styles['product-card__title']}>
         {productName}
-      </h1>
+      </h2>
       <MainFeatures mainFeatures={mainFeatures}/>
       <div className={styles['product-card__price-wrapper']}>
         <span className={styles['product-card__new-price']}>{newPrice}</span>
