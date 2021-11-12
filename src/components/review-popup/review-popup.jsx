@@ -89,6 +89,13 @@ function ReviewPopup (props) {
   });
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
+  useEffect(() => {
     const popupReviewData = {
       name,
       advantages,

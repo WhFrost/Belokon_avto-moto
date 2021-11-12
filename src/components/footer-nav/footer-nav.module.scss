@@ -1,19 +1,19 @@
-.footer-nav {
-  display: flex;
-  align-items: center;
-}
-
 .footer-nav__list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
   margin: 0;
   padding: 0;
 
   list-style: none;
+
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  grid-template-columns: repeat(7, auto);
+
+  @media(min-width: 1199px) {
+    grid-column-gap: 55px;
+  }
 }
 
 .footer-nav__item:not(:last-child) {
-  margin-right: 66px;
+  margin-right: 10px;
 }

@@ -38,6 +38,13 @@ body {
   font-weight: normal;
   font-family: 'OpenSans', 'Arial', sans-serif;
   font-style: normal;
+
+  > div {
+    display: grid;
+    height: 100vh;
+
+    grid-template-rows: auto 1fr auto;
+  }
 }
 
 *,
@@ -61,6 +68,8 @@ body {
 }
 
 .container {
-  max-width: 1181px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding-right: 10px;
+  padding-left: 10px;
 }

@@ -4,9 +4,23 @@
 }
 
 .slider__active-slide-container {
+  position: relative;
+
   width: 600px;
   height: 375px;
   margin-bottom: 39px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 122px;
+    height: 30px;
+
+    background: url(../../assets/img/label.png);
+  }
 }
 
 .slider__controls {

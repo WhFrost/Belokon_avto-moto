@@ -1,19 +1,17 @@
 .main-nav {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 
 .main-nav__list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
   margin: 0;
   padding: 0;
 
   list-style: none;
+
+  grid-column-gap: 68px;
+  grid-template-columns: repeat(4, auto);
 }
 
-.main-nav__item:not(:last-child) {
-  margin-right: 68px;
-}

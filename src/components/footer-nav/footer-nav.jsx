@@ -8,17 +8,15 @@ function FooterNav (props) {
   const {footerNavItems} = props;
 
   return (
-    <nav className={styles['footer-nav']}>
-      <ul className={styles['footer-nav__list']}>
-        {
-          footerNavItems.map((item) => (
-            <li className={styles['footer-nav__item']} key={nanoid()}>
-              <NavLink title={item.title} link = {item.link} />
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
+    <ul className={styles['footer-nav__list']}>
+      {
+        footerNavItems.map((item) => (
+          <li className={styles['footer-nav__item']} key={nanoid()}>
+            <NavLink title={item.title} link = {item.link} />
+          </li>
+        ))
+      }
+    </ul>
   );
 }
 FooterNav.propTypes = {
