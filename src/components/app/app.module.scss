@@ -31,8 +31,10 @@
   url('../../assets/fonts/open-sans-bold.woff');
 }
 
+html,
 body {
   min-width: 1024px;
+  height: 100vh;
   margin: 0;
 
   font-weight: normal;
@@ -41,7 +43,7 @@ body {
 
   > div {
     display: grid;
-    height: 100vh;
+    min-height: 100vh;
 
     grid-template-rows: auto 1fr auto;
   }
