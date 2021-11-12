@@ -48,6 +48,7 @@ function ReviewPopup (props) {
     : `${styles['form__input']} ${styles['form__input--comment']}`;
 
   const overlayRef = useRef(null);
+  const popupRef  = useRef(null);
 
   const handleReviewSubmit = (evt) => {
     evt.preventDefault();
@@ -64,6 +65,28 @@ function ReviewPopup (props) {
       onReviewSubmit(review);
       localStorage.setItem('popupReviewData', JSON.stringify(review));
       onPopupClose();
+    }
+  };
+
+  const handleKeyPressOnFirstInteractiveElement = (evt, elements) => {
+    evt.preventDefault();
+    if (evt.shiftKey && evt.key === 'Tab') {
+      elements[elements.length - 1].focus();
+    } else if (!evt.shiftKey && evt.key === 'Tab') {
+      elements[1].focus();
+    } else if (evt.key === 'Enter') {
+      onPopupClose();
+    }
+  };
+
+  const handleKeyPressOnLastInteractiveElement = (evt, elements) => {
+    evt.preventDefault();
+    if (!evt.shiftKey && evt.key === 'Tab') {
+      elements[0].focus();
+    } else if (evt.shiftKey && evt.key === 'Tab') {
+      elements[elements.length - 2].focus();
+    } else if (evt.key === 'Enter') {
+      onPopupClose(evt);
     }
   };
 
@@ -106,9 +129,30 @@ function ReviewPopup (props) {
     localStorage.setItem('popupReviewData', JSON.stringify(popupReviewData));
   }, [name, advantages, disadvantages, popupRating, comment]);
 
+  useEffect(() => {
+    const interactiveElements = popupRef.current.querySelectorAll(
+      'button', 'input', 'textarea', '[tabindex]:not([tabindex=-1])');
+    interactiveElements[0].addEventListener('keydown', (evt) =>
+      handleKeyPressOnFirstInteractiveElement(evt, interactiveElements),
+    );
+    interactiveElements[interactiveElements.length - 1].addEventListener(
+      'keydown',
+      (evt) => handleKeyPressOnLastInteractiveElement(evt, interactiveElements),
+    );
+    return () => {
+      interactiveElements[0].removeEventListener('keydown', (evt) =>
+        handleKeyPressOnFirstInteractiveElement(evt, interactiveElements),
+      );
+      interactiveElements[interactiveElements.length - 1].removeEventListener(
+        'keydown',
+        (evt) => handleKeyPressOnLastInteractiveElement(evt, interactiveElements),
+      );
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className={styles['overlay']} ref={overlayRef}>
-      <div className={styles['popup']}>
+      <div className={styles['popup']} ref={popupRef}>
         <h3 className={styles['popup__title']}>
           Оставить отзыв
         </h3>
